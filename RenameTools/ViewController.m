@@ -14,6 +14,7 @@
     NSString *rootFilePath;
     NSInteger currentIndex;
     NSFileManager  *mFileManager;
+    NSAlert  *alert;
 }
 @property (weak) IBOutlet NSImageView *xxxImageView;
 @property (weak) IBOutlet NSImageView *xxImageView;
@@ -32,6 +33,13 @@
     mFileManager = [NSFileManager defaultManager];
     _renameTextField.delegate =self;
     // Do any additional setup after loading the view.
+    
+    alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:@"先输入名称"];
+    [alert setInformativeText:@"Deleted records cannot be restored."];
+    [alert setAlertStyle:NSAlertStyleWarning];
+    [[[self view]window] setTitle: @"Android 图标重命名工具"];
 }
 
 
@@ -64,6 +72,7 @@
     }
     currentIndex = [_mTableView selectedRow];
     _renameTextField.stringValue = @"";
+    [_renameTextField becomeFirstResponder];
     [self loadSelectedImage];
 }
 
@@ -109,18 +118,32 @@
     NSString *fileName =[NSString stringWithFormat:@"%@/%@/%@",rootFilePath,imagePath,imageName];
     return [[NSImage alloc]initWithContentsOfFile:fileName];
 }
--(void)keyDown:(NSEvent *)event{
-    if (event.keyCode == 0x4C) {
-        NSLog(@"enter");
+-(void)keyUp:(NSEvent *)event{
+    if ((event.keyCode == 36)&&[self isInputIsFirstResponser]) {
+        
+        [self renameAllFile:nil];
     }
 }
--(BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector{
-    NSEventModifierFlags *flags = [NSApplication sharedApplication].currentEvent.modifierFlags;
-    if (flags.raw)
+
+-(BOOL)isInputIsFirstResponser{
+    NSResponder *firstResponder = [[NSApp keyWindow]firstResponder ];
+    if([firstResponder isKindOfClass:[NSText class]]&&[(id)firstResponder delegate] == _renameTextField){
+        return YES;
+    }
+    return NO;
 }
 - (IBAction)renameAllFile:(id)sender {
-    NSString *fileName = [imageArray objectAtIndex:currentIndex];
     NSString *targetName = _renameTextField.stringValue;
+    if ([targetName isEqualToString:@""]) {
+        [_renameTextField resignFirstResponder];
+        [alert runModal];
+        return;
+    }
+    NSString *fileName = [imageArray objectAtIndex:currentIndex];
+    if (![targetName containsString:@"."]) {
+        NSString *suffix = [fileName componentsSeparatedByString:@"."][1];
+        targetName  =[NSString stringWithFormat:@"%@.%@",targetName,suffix];
+    }
     for(NSString *path in allSubDirectory){
         NSString *directory = [NSString stringWithFormat:@"%@/%@",rootFilePath,path];
         NSString *sourceFile = [NSString stringWithFormat:@"%@/%@",directory,fileName];

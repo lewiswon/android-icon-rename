@@ -664,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Android 图标重命名工具" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="644" y="405" width="800" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -797,15 +797,14 @@
                                     <action selector="openFolder:" target="XfG-lQ-9wD" id="lwu-Kt-dZf"/>
                                 </connections>
                             </button>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UL-B3-YGn">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UL-B3-YGn">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="480"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" id="oU5-ze-buv">
-                                    <rect key="frame" x="1" y="0.0" width="238" height="479"/>
+                                <clipView key="contentView" id="oU5-ze-buv">
+                                    <rect key="frame" x="1" y="1" width="238" height="478"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" rowSizeStyle="automatic" headerView="mOO-lO-KpG" viewBased="YES" id="QNj-0u-Eaz">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="456"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" rowSizeStyle="automatic" viewBased="YES" id="QNj-0u-Eaz">
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="478"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -865,26 +864,28 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="8H4-Pk-7Ns"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="524-Pz-ZqS">
-                                    <rect key="frame" x="1" y="463" width="238" height="16"/>
+                                    <rect key="frame" x="1" y="-16" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cJ6-WZ-blw">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="cJ6-WZ-blw">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="mOO-lO-KpG">
-                                    <rect key="frame" x="0.0" y="0.0" width="238" height="23"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableHeaderView>
                             </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="LI9-aH-Hon" secondAttribute="bottom" id="4VK-MH-Jdj"/>
+                            <constraint firstItem="5UL-B3-YGn" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" id="7wE-6V-EFc"/>
                             <constraint firstAttribute="trailing" secondItem="LI9-aH-Hon" secondAttribute="trailing" id="8H0-1Q-eny"/>
                             <constraint firstAttribute="trailing" secondItem="Syo-yb-ERS" secondAttribute="trailing" constant="230" id="F1E-H3-NOy"/>
                             <constraint firstItem="LI9-aH-Hon" firstAttribute="leading" secondItem="QNj-0u-Eaz" secondAttribute="trailing" id="LdT-Jg-BVd"/>
+                            <constraint firstItem="5UL-B3-YGn" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Ldl-tn-sUN"/>
                             <constraint firstItem="LI9-aH-Hon" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Lyj-rr-8Gz"/>
+                            <constraint firstItem="5UL-B3-YGn" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Wzu-td-ZYK"/>
                             <constraint firstItem="Syo-yb-ERS" firstAttribute="leading" secondItem="QNj-0u-Eaz" secondAttribute="trailing" constant="236" id="lFa-mY-T3y"/>
                             <constraint firstItem="Syo-yb-ERS" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="rdq-oA-76X"/>
                         </constraints>
