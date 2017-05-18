@@ -14,4 +14,4 @@
 
 ### 软件截图
 
-![截图](./screen shot/rename.png)	
+![截图](https://github.com/lewiswon/android-icon-rename/blob/master/screen%20shot/rename.png)	
